@@ -26,7 +26,9 @@ DIRNAME=`dirname $0`
 # ERROR - jmeter.engine.ClientJMeterEngine: java.rmi.ConnectException: Connection refused to host: 127.0.0.1
 # then it may be due to the server host returning 127.0.0.1 as its address
 
+PUBLIC_ADDR=`dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'`
+
 # One way to fix this is to define RMI_HOST_DEF below
-RMI_HOST_DEF=-Djava.rmi.server.hostname=127.0.0.1
+RMI_HOST_DEF=-Djava.rmi.server.hostname=${PUBLIC_ADDR}
 
 ${DIRNAME}/jmeter ${RMI_HOST_DEF} -Dserver_port=${SERVER_PORT:-1099} -s -j jmeter-server.log "$@"
