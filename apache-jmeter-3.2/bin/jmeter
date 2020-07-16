@@ -6,9 +6,9 @@
 ##   The ASF licenses this file to You under the Apache License, Version 2.0
 ##   (the "License"); you may not use this file except in compliance with
 ##   the License.  You may obtain a copy of the License at
-## 
+##
 ##       http://www.apache.org/licenses/LICENSE-2.0
-## 
+##
 ##   Unless required by applicable law or agreed to in writing, software
 ##   distributed under the License is distributed on an "AS IS" BASIS,
 ##   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,7 @@ minimal_version=`echo $MINIMAL_VERSION | awk -F'.' '{ print $2 }'`
 current_version=`echo $CURRENT_VERSION | awk -F'.' '{ print $2 }'`
 if [ $current_version ]; then
         if [ $current_version -lt $minimal_version ]; then
-                 echo "Error: Java version is too low to run JMeter. Needs at least Java >= ${MINIMAL_VERSION}." 
+                 echo "Error: Java version is too low to run JMeter. Needs at least Java >= ${MINIMAL_VERSION}."
                  exit 1
         fi
     else
@@ -68,7 +68,7 @@ done
 PRGDIR=`dirname "$PRG"`
 
 #
-# Original page has disappeared, it is now only available at: 
+# Original page has disappeared, it is now only available at:
 # https://web.archive.org/web/20060614151434/http://www.atg.com/portal/myatg/developer?paf_dm=full&paf_gear_id=1100010&detailArticle=true&id=9606
 #
 # JMeter objects can generally be grouped into three life-length groups:
@@ -76,7 +76,7 @@ PRGDIR=`dirname "$PRG"`
 # - Per-sample objects (results, DOMs,...). An awful lot of those.
 #   Life length of milliseconds to a few seconds.
 #
-# - Per-run objects (threads, listener data structures,...). Not that many 
+# - Per-run objects (threads, listener data structures,...). Not that many
 #   of those unless we use the table or tree listeners on heavy runs.
 #   Life length of minutes to several hours, from creation to start of next run.
 #
@@ -85,7 +85,7 @@ PRGDIR=`dirname "$PRG"`
 
 # This is the base heap size -- you may increase or decrease it to fit your
 # system's memory availability:
-HEAP="-Xms512m -Xmx512m"
+HEAP="-Xms7168m -Xmx8192m"
 
 #VERBOSE_GC="-verbose:gc -Xloggc:gc_jmeter_%p.log -XX:+PrintGCDetails -XX:+PrintGCCause -XX:+PrintTenuringDistribution -XX:+PrintHeapAtGC -XX:+PrintGCApplicationConcurrentTime -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCDateStamps"
 
